@@ -1,0 +1,17 @@
+<script>
+    jQuery(document).ready(function() {
+        var source = new EventSource('/messages/events'),
+                message;
+        source.addEventListener('messages.create', function (e) {
+            message = JSON.parse(e.data);
+            console.log("messages.create: " + message);
+            $("#messages").append($('<li>').text(message.name + ': ' + message.content));
+        });
+    });
+</script>
+
+<ul id="messages">
+  <%= render @messages %>
+</ul>
+
+<%= link_to 'New message', new_message_path %>

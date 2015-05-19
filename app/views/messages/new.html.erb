@@ -1,0 +1,5 @@
+<%= form_for @message do |f| %>
+    <%= f.text_field :name, placeholder: "Name" %>
+    <%= f.text_field :content %>
+    <%= f.submit "Send" %>
+<% end %>
